@@ -34,7 +34,7 @@ VBoxManage storageattach $VM --storagectl "SATA Controller" --port 0 --device 0 
 
 # Adición de controlador de disco para instalar SO.
 VBoxManage storagectl $VM --name "IDE Controller" --add ide
-VBoxManage storageattach $VM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium archlinux32-2021.09.01-i686.iso
+VBoxManage storageattach $VM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium archlinux-2021.09.01-x86_64.iso
 
 
 # Configuración general del sistema.
