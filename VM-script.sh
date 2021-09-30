@@ -17,13 +17,15 @@
 # Definición e inicialización de la variable WM. Esta será usada para refrenciar nuestra máquina.
 VM='Arch-Linux-32bit'
 
+# Descarga de la ISO.
+wget http://mirrors.udenar.edu.co/archlinux/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso
 
 # Creación de un disco dínamico de 32Gb
 VBoxManage createhd --filename $VM.vdi --size 20480
 
 
 # Creación de la máquina virtual.
-VBoxManage createvm --name $VM --ostype "ArchLinux" --register
+VBoxManage createvm --name $VM --ostype "ArchLinux_64" --register
 
 
 # Se agrega un controldaor SATA con el controlador del disco adjunto.
