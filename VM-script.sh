@@ -1,17 +1,18 @@
 #! /usr/bin/bash
 
-###############################################################################################
-#
-# Nombre: WM-script.sh
-#
-# Descripción: 
-#
-# Fecha: 26/09/2021.
-#
-# Autor: @Axzel {alejo13580@gmail.com}
-# Autor: @Akira
-#
-###############################################################################################
+#################################################################################################
+#                                                                                               #
+# Nombre: WM-script.sh                                                                          #
+#                                                                                               #
+# Descripción:  el script descarga una iso de Arch linux (64 bits) y la usa para crear          #
+#               una máquina virtual.                                                            #
+#                                                                                               #
+# Fecha: 30/09/2021.                                                                            #
+#                                                                                               #
+# Autor: @Axzel {alejo13580@gmail.com}                                                          #
+# Autor: @Akira                                                                                 #
+#                                                                                               #
+#################################################################################################
 
 
 # Definición e inicialización de la variable WM. Esta será usada para refrenciar nuestra máquina.
@@ -49,12 +50,5 @@ VBoxManage modifyvm $VM --nic1 bridged --bridgeadapter1 eno1
 VBoxManage modifyvm $VM --memory 1024 --vram 64
 
 
-# Comando
+# Comando de arranque.
 # VBoxHeadless -s $VM
-
-# VBoxManage storageattach $VM --storagectl "IDE Controller" --port 0 \
-# >  --device 0 --type dvddrive --medium none
-
-# VBoxManage snapshot $VM take <name of snapshot>
-
-# VBoxManage snapshot $VM restore <name of snapshot>
