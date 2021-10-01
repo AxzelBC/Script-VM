@@ -10,16 +10,18 @@
 # Fecha: 30/09/2021.                                                                            #
 #                                                                                               #
 # Autor: @Axzel {alejo13580@gmail.com}                                                          #
+# Estudiante: Alejandro Cardona Mosquera - 2022499                                              #
 # Autor: @Akira                                                                                 #
+# Estudiante: [Nombre] - [Código]                                                               #
 #                                                                                               #
 #################################################################################################
 
-
-# Definición e inicialización de la variable WM. Esta será usada para refrenciar nuestra máquina.
-VM='Arch-Linux-32bit'
-
 # Descarga de la ISO.
 wget http://mirrors.udenar.edu.co/archlinux/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso
+
+
+# Definición e inicialización de la variable WM. Esta será usada para refrenciar nuestra máquina.
+VM='Arch-Linux-64bits'
 
 # Creación de un disco dínamico de 32Gb
 VBoxManage createhd --filename $VM.vdi --size 20480
