@@ -11,19 +11,21 @@
 #                                                                                               #
 # Autor: @Axzel {alejo13580@gmail.com}                                                          #
 # Estudiante: Alejandro Cardona Mosquera - 2022499                                              #
-# Autor: @Akira                                                                                 #
-# Estudiante: [Nombre] - [Código]                                                               #
+# Autor: @Akira {daniel.cuaical@correounivalle.edu.co}                                          #
+# Estudiante: Daniel Felipe Vélez C. - 1924306                                                  #
 #                                                                                               #
 #################################################################################################
 
-# Descarga de la ISO.
-wget http://mirrors.udenar.edu.co/archlinux/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso
+# Verificar si existe el .iso de ArchLinux.
+if [ ! -f ./archlinux.iso ]; then 
+	# Descarga de la ISO.
+	wget http://mirrors.udenar.edu.co/archlinux/iso/2021.09.01/archlinux-2021.09.01-x86_64.iso -O archlinux.iso
+fi
 
-
-# Definición e inicialización de la variable WM. Esta será usada para refrenciar nuestra máquina.
+# Definición e inicialización de la variable WM. Esta será usada para referenciar nuestra máquina.
 VM='Arch-Linux-64bits'
 
-# Creación de un disco dínamico de 32Gb
+# Creación de un disco dínamico de 20 GiB
 VBoxManage createhd --filename $VM.vdi --size 20480
 
 
@@ -31,13 +33,13 @@ VBoxManage createhd --filename $VM.vdi --size 20480
 VBoxManage createvm --name $VM --ostype "ArchLinux_64" --register
 
 
-# Se agrega un controldaor SATA con el controlador del disco adjunto.
+# Se agrega un controlador SATA con el controlador del disco adjunto.
 VBoxManage storagectl $VM --name "SATA Controller" --add sata --controller IntelAHCI
 VBoxManage storageattach $VM --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium $VM.vdi
 
 # Adición de controlador de disco para instalar SO.
 VBoxManage storagectl $VM --name "IDE Controller" --add ide
-VBoxManage storageattach $VM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium archlinux-2021.09.01-x86_64.iso
+VBoxManage storageattach $VM --storagectl "IDE Controller" --port 0 --device 0 --type dvddrive --medium archlinux.iso
 
 
 # Configuración general del sistema.
@@ -47,7 +49,7 @@ VBoxManage modifyvm $VM --ioapic on
 # Configuración de booteo de la BIOS.
 VBoxManage modifyvm $VM --boot1 dvd --boot2 disk --boot3 none --boot4 none
 # Configuración de la tarjera y adaptadores de Red.
-VBoxManage modifyvm $VM --nic1 bridged --bridgeadapter1 eno1
+VBoxManage modifyvm $VM --nic1 bridged --bridgeadapter1 wlp1s0 # otros: eno1
 # Memoria RAM y memoria de vídeo.
 VBoxManage modifyvm $VM --memory 1024 --vram 64
 
